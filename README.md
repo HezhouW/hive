@@ -76,8 +76,44 @@ MySQL 5.7 <br/>
 	爬了8w条用户id，用户名，有一些http代理被屏蔽了，下次会增加ip代理的数量和质量进行爬取<br/>
 	最后一层用户具体信息还没有爬，等有了高质量的代理，再进行大量数据的爬取<br/>
 	2018-2-11<br/>
-
-
+9. bilibili<br/>
+	原本目标是爬取bilibili的所有用户的mid，<br/>
+	突然恍悟这是一个伪需求，因为bilibili的用户是从1开始的<br/>
+	bilibili约有2 5700 0000位用户<br/>
+	直接拼接就行了 https://space.bilibili.com/257000000/#/<br/>
+	下一步是取得信息
+10. ruleTest<br/>
+    使用scrpay的rule功能。一个小demo爬取豆瓣top250
+11. fenbu<br/>
+    使用scrapy-redis的分布式爬虫功能
+12. xunying_redis<br/>
+    一个网上的demo ， 我用来测试scrapy-redis
+13. huicong<br/>
+	使用scrapy-redis的分布式爬虫，爬取hc360的商品信息，并将结果存入
+	mongo 或 hbase中，由于服务器内存只有4G,redis被爆掉了，所以又改进了一个不是分布式的爬虫。<br/>
+	数据存入hbase中
+14. huangye88<br/>
+	包含了两个爬虫，一个爬取黄页88的商品url，另一个获取黄页88的商品信息并存入mongo<br/>
+	爬取了2000w数据左右
+15. huangye88_Company<br/>
+	爬取黄页88的企业信息，一切进行的很顺利。直到最后发现企业的id也是按照顺序来的，又白做了。就当做练习了。改了一下，变成了很简单的爬虫。需要注意按顺序遍历，有的公司有自定义域名，会直接跳转，不需要特殊处理，但是在保存的时候可以使用response.url 来进行保存。
+16. huicong_com<br/>
+    爬取hc360的企业信息。
+17. huicong_goods<br/>
+	定时同步爬取慧聪新发布的商品
+18. ali<br/>
+    获取1688.com的店铺id，商品id
+19. ali_F<br/>
+    获取1688.com的商品详情，使用之前获取到的商品id
+20. huicong_goods_geturl<br/>
+    由于#17爬虫的效率较低，单机爬取一天只有3w条左右数据，不满足需求，所以使用scrapy_redis重构为分布式爬虫，这个是分布式爬虫的第一部分，用于获取url。
+21. huicong_goods_fenbu<br/>
+    这是分布式爬虫的第二部分，用于爬取并选择页面信息。
+22. ali_geturl<br/>
+	阿里商品爬虫也设计为分布式爬虫，这一部分用于获取url
+23. ali_fenbu<br/>
+	阿里商品爬虫的工作端，爬取页面中的信息
+        
 ## V0.0.3 版本内容 newSpider <br/>
 1. bilibili<br/>
     请求接口，获取bilibili直播的弹幕内容，简单实现<br/>
@@ -100,3 +136,10 @@ MySQL 5.7 <br/>
 	2018 2 3<br/>
 	使用多线程优化了imageS2爬虫，极大程度上提高了爬取速度<br/>
 	2018 2 8<br/>
+7. lottery<br/>
+    爬了双色球有史以来的中将号码，并且使用pandas处理，matplotlib绘图，<br/>
+    找出中奖率最高的号码是 01 08 14 20 22 26 + 12
+8. stock<br/>
+    抓取股票信息，用pandas处理之后存入mysql
+
+from mac test

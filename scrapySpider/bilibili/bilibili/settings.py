@@ -19,8 +19,21 @@ NEWSPIDER_MODULE = 'bilibili.spiders'
 #USER_AGENT = 'bilibili (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
+MY_USER_AGENT = [
+    "Mozilla/5.0 (Windows NT 10.0; …) Gecko/20100101 Firefox/58.0",
+    ]
+
+DOWNLOADER_MIDDLEWARES = {
+    'bilibili.middlewares.MyUserAgentMiddleware': 400,
+}
+
+FEED_EXPORTERS_BASE = {
+    'json' : 'bilibili.tojson.chongxie' ,
+    'jsonlines' : 'scrapy.contrib.exporter.JsonLinesItemExporter',
+
+}
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
 
